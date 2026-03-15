@@ -23,7 +23,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-43xd9(ra7_7@=fazemh@+k(o+*q_vwjrlm8k$!tt45vta!85rc'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = [
     "pitflex.com.br",
@@ -128,3 +128,7 @@ STATIC_URL = 'static/'
 REST_FRAMEWORK = {
     "DEFAULT_FILTER_BACKENDS": ["django_filters.rest_framework.DjangoFilterBackend"],
 }
+
+STATIC_ROOT = '/srv/pitflex/static/'
+
+STATICFILES_DIRS = []
