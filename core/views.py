@@ -2,6 +2,7 @@ from django.http import JsonResponse
 from rest_framework import viewsets, status
 from rest_framework.decorators import action
 from rest_framework.response import Response
+from django.shortcuts import render
 
 from .models import Service, Professional, Customer, Order
 from .serializers import (
@@ -84,3 +85,6 @@ class OrderViewSet(viewsets.ModelViewSet):
         order.save(update_fields=["professional_id", "status"])
 
         return Response(OrderSerializer(order).data)
+
+def landing(request):
+    return render(request, "landing/index.html")
