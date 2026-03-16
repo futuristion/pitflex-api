@@ -66,3 +66,26 @@ class Order(models.Model):
 
     def __str__(self):
         return f"#{self.id} {self.service.name} - {self.status}"
+
+
+class ClientWaitlist(models.Model):
+    name = models.CharField(max_length=120)
+    phone = models.CharField(max_length=30)
+    email = models.EmailField(blank=True)
+    neighborhood = models.CharField(max_length=80)
+    created_at = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return self.name
+
+
+class ProviderWaitlist(models.Model):
+    name = models.CharField(max_length=120)
+    phone = models.CharField(max_length=30)
+    email = models.EmailField(blank=True)
+    service_type = models.CharField(max_length=120)
+    neighborhood = models.CharField(max_length=80)
+    created_at = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return self.name

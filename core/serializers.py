@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from .models import Service, Professional, Customer, Order
+from .models import Service, Professional, Customer, Order, ClientWaitlist, ProviderWaitlist
 
 
 class ServiceSerializer(serializers.ModelSerializer):
@@ -71,3 +71,15 @@ class PublicOrderRequestSerializer(serializers.Serializer):
     address = serializers.CharField(required=False, allow_blank=True)
     reference = serializers.CharField(required=False, allow_blank=True)
     notes = serializers.CharField(required=False, allow_blank=True)
+
+
+class ClientWaitlistSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = ClientWaitlist
+        fields = "__all__"
+
+
+class ProviderWaitlistSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = ProviderWaitlist
+        fields = "__all__"

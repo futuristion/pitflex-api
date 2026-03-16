@@ -492,10 +492,23 @@
     <section class="hero" id="inicio">
       <div class="container hero-grid">
         <div>
+          <br></br>
+          <div class="hero-actions">
 
+<a class="btn btn-primary" href="#lista-clientes">
+Entrar na Lista de Clientes
+</a>
+
+<a class="btn btn-secondary" href="#lista-prestadores">
+Entrar na Lista de Prestadores
+</a>
+
+</div>
+          <br></br>
            <a class="btn btn-primary" href="#solicitar">
               Solicitar atendimento
           </a>
+          <br></br>
 
           <div class="eyebrow">⚡ Mobilidade prática, atendimento rápido e operação inteligente</div>
           <h1>O cuidado automotivo que <span class="headline-accent">vai até você</span>.</h1>
@@ -557,6 +570,48 @@
         </div>
       </div>
     </section>
+
+    <section id="lista-clientes">
+
+<h2>Entrar na Lista de Clientes</h2>
+
+<form id="clientWaitlist">
+
+<input type="text" name="name" placeholder="Seu nome" required>
+
+<input type="text" name="phone" placeholder="Telefone" required>
+
+<input type="email" name="email" placeholder="Email">
+
+<input type="text" name="neighborhood" placeholder="Bairro">
+
+<button type="submit">Quero ser avisado</button>
+
+</form>
+
+</section>
+
+<section id="lista-prestadores">
+
+<h2>Entrar na Lista de Prestadores</h2>
+
+<form id="providerWaitlist">
+
+<input type="text" name="name" placeholder="Nome">
+
+<input type="text" name="phone" placeholder="Telefone">
+
+<input type="email" name="email" placeholder="Email">
+
+<input type="text" name="service_type" placeholder="Serviço que realiza">
+
+<input type="text" name="neighborhood" placeholder="Bairro">
+
+<button type="submit">Quero prestar serviço</button>
+
+</form>
+
+</section>
 
     <section id="servicos">
       <div class="container">
@@ -957,6 +1012,29 @@ document.getElementById("pedidoForm").addEventListener("submit", async function(
     console.log(error)
     alert("Erro ao enviar pedido.")
   }
+
+})
+
+</script>
+
+<script>
+
+document.getElementById("clientWaitlist").addEventListener("submit", async function(e){
+
+e.preventDefault()
+
+const data = Object.fromEntries(new FormData(this))
+
+await fetch("/api/waitlist/client/",{
+method:"POST",
+headers:{
+"Content-Type":"application/json"
+},
+body: JSON.stringify(data)
+})
+
+alert("Você entrou na lista!")
+this.reset()
 
 })
 

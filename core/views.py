@@ -12,6 +12,8 @@ from .serializers import (
     OrderSerializer,
     OrderStatusSerializer,
     PublicOrderRequestSerializer,
+    ProviderWaitlistSerializer, 
+    ClientWaitlistSerializer, 
 )
 
 def health(request):
@@ -127,3 +129,24 @@ def public_order_request(request):
         },
         status=status.HTTP_201_CREATED,
     )
+
+@api_view(["POST"])
+def join_client_waitlist(request):
+    serializer = ClientWaitlistSerializer(data=request.data)
+
+    if serializer.is_valid():
+        serializer.save()
+        return Response({"message": "Cadastro realizado com sucesso!"})
+
+    return Response(serializer.errors, status=400)
+
+
+@api_view(["POST"])
+def join_provider_waitlist(request):
+    serializer = ProviderWaitlistSerializer(data=request.data)
+
+    if serializer.is_valid():
+        serializer.save()
+        return Response({"message": "Cadastro realizado com sucesso!"})
+
+    return Response(serializer.errors, status=400)

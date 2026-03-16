@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Service, Professional, Customer, Order
+from .models import Service, Professional, Customer, Order, ClientWaitlist, ProviderWaitlist
 
 
 @admin.register(Service)
@@ -28,3 +28,7 @@ class OrderAdmin(admin.ModelAdmin):
     list_display = ("id", "created_at", "service", "customer", "professional", "status", "neighborhood")
     list_filter = ("status", "service", "created_at")
     search_fields = ("customer__name", "professional__name", "address")
+
+
+admin.site.register(ClientWaitlist)
+admin.site.register(ProviderWaitlist)
