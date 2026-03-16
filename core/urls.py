@@ -12,5 +12,6 @@ router.register("orders", OrderViewSet, basename="orders")
 urlpatterns = [
     path("", landing, name="landing"),
     path("health/", health),
-    path("api/", include(router.urls)),    
+    path("api/", include(router.urls)),
+    #path("api/request-service/", public_order_request, name="public_order_request"),    
 ]

@@ -492,6 +492,11 @@
     <section class="hero" id="inicio">
       <div class="container hero-grid">
         <div>
+
+           <a class="btn btn-primary" href="#solicitar">
+              Solicitar atendimento
+          </a>
+
           <div class="eyebrow">⚡ Mobilidade prática, atendimento rápido e operação inteligente</div>
           <h1>O cuidado automotivo que <span class="headline-accent">vai até você</span>.</h1>
           <p class="lead">
@@ -602,16 +607,13 @@
       </div>
     </section>
 
-    <a class="btn btn-primary" href="#solicitar">
-    Solicitar atendimento
-    </a>
-
     <section id="solicitar">
   <div class="container">
 
     <h2 class="section-title">Solicitar atendimento</h2>
 
     <form id="pedidoForm">
+      {% csrf_token %}
 
       <input type="text" name="nome" placeholder="Seu nome" required>
 
@@ -902,38 +904,53 @@
   </footer>
 
   <script>
-
-document.getElementById("pedidoForm").addEventListener("submit", async function(e){
-
-e.preventDefault()
-
-const form = new FormData(this)
-
-const data = {
-customer_name: form.get("nome"),
-phone: form.get("telefone"),
-service_id: form.get("servico"),
-neighborhood: form.get("bairro"),
-notes: form.get("observacao")
+function getCookie(name) {
+  let cookieValue = null;
+  if (document.cookie && document.cookie !== "") {
+    const cookies = document.cookie.split(";");
+    for (let i = 0; i < cookies.length; i++) {
+      const cookie = cookies[i].trim();
+      if (cookie.substring(0, name.length + 1) === (name + "=")) {
+        cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+        break;
+      }
+    }
+  }
+  return cookieValue;
 }
 
-const res = await fetch("/api/orders/",{
-method:"POST",
-headers:{
-"Content-Type":"application/json"
-},
-body: JSON.stringify(data)
-})
+document.getElementById("pedidoForm").addEventListener("submit", async function (e) {
+  e.preventDefault();
 
-if(res.ok){
-alert("Solicitação enviada! Em breve entraremos em contato.")
-this.reset()
-}else{
-alert("Erro ao enviar pedido.")
-}
+  const form = new FormData(this);
+  const csrftoken = getCookie("csrftoken");
 
-})
+  const data = {
+    customer_name: form.get("nome"),
+    phone: form.get("telefone"),
+    service_id: parseInt(form.get("servico")),
+    neighborhood: form.get("bairro"),
+    notes: form.get("observacao")
+  };
 
+  const res = await fetch("/api/request-service/", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+      "X-CSRFToken": csrftoken
+    },
+    body: JSON.stringify(data)
+  });
+
+  if (res.ok) {
+    alert("Solicitação enviada! Em breve entraremos em contato.");
+    this.reset();
+  } else {
+    const errorText = await res.text();
+    console.error("Erro:", errorText);
+    alert("Erro ao enviar pedido.");
+  }
+});
 </script>
 
 
