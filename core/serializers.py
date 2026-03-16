@@ -60,3 +60,14 @@ class OrderSerializer(serializers.ModelSerializer):
 
 class OrderStatusSerializer(serializers.Serializer):
     status = serializers.ChoiceField(choices=Order.Status.choices)
+
+
+class PublicOrderRequestSerializer(serializers.Serializer):
+    customer_name = serializers.CharField(max_length=120)
+    phone = serializers.CharField(max_length=30)
+    service_id = serializers.IntegerField()
+    neighborhood = serializers.CharField(max_length=80)
+
+    address = serializers.CharField(required=False, allow_blank=True)
+    reference = serializers.CharField(required=False, allow_blank=True)
+    notes = serializers.CharField(required=False, allow_blank=True)

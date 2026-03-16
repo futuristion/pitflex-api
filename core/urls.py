@@ -2,6 +2,7 @@ from django.urls import path, include
 from rest_framework.routers import DefaultRouter
 from .views import health, ServiceViewSet, ProfessionalViewSet, CustomerViewSet, OrderViewSet
 from .views import landing
+from .views import public_order_request
 
 router = DefaultRouter()
 router.register("services", ServiceViewSet, basename="services")
@@ -13,5 +14,5 @@ urlpatterns = [
     path("", landing, name="landing"),
     path("health/", health),
     path("api/", include(router.urls)),
-    #path("api/request-service/", public_order_request, name="public_order_request"),    
-]
+    path("api/request-service/", public_order_request, name="public_order_request"),
+    ]

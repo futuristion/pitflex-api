@@ -613,31 +613,31 @@
     <h2 class="section-title">Solicitar atendimento</h2>
 
     <form id="pedidoForm">
-      {% csrf_token %}
+  {% csrf_token %}
 
-      <input type="text" name="nome" placeholder="Seu nome" required>
+  <input type="text" name="nome" placeholder="Seu nome" required>
 
-      <input type="text" name="telefone" placeholder="Telefone" required>
+  <input type="text" name="telefone" placeholder="Telefone" required>
 
-      <select name="servico" required>
-        <option value="">Selecione o serviço</option>
-        <option value="1">Troca de pneu</option>
-        <option value="2">Reparo de pneu</option>
-        <option value="3">Calibragem</option>
-        <option value="4">Rodízio de pneus</option>
-        <option value="5">Troca de bateria</option>
-        <option value="6">Carga emergencial</option>
-      </select>
+  <select name="servico" required>
+    <option value="">Selecione o serviço</option>
+    <option value="1">Troca de pneu</option>
+    <option value="2">Reparo de pneu</option>
+    <option value="3">Calibragem</option>
+    <option value="4">Rodízio de pneus</option>
+    <option value="5">Troca de bateria</option>
+    <option value="6">Carga emergencial</option>
+  </select>
 
-      <input type="text" name="bairro" placeholder="Bairro" required>
+  <input type="text" name="bairro" placeholder="Bairro" required>
 
-      <textarea name="observacao" placeholder="Detalhes do problema"></textarea>
+  <textarea name="observacao" placeholder="Detalhes do problema"></textarea>
 
-      <button class="btn btn-primary" type="submit">
-        Enviar solicitação
-      </button>
+  <button class="btn btn-primary" type="submit">
+    Enviar solicitação
+  </button>
 
-    </form>
+</form>
 
   </div>
 </section>
@@ -904,26 +904,33 @@
   </footer>
 
   <script>
+
 function getCookie(name) {
   let cookieValue = null;
+
   if (document.cookie && document.cookie !== "") {
     const cookies = document.cookie.split(";");
+
     for (let i = 0; i < cookies.length; i++) {
       const cookie = cookies[i].trim();
+
       if (cookie.substring(0, name.length + 1) === (name + "=")) {
         cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
         break;
       }
     }
   }
+
   return cookieValue;
 }
 
-document.getElementById("pedidoForm").addEventListener("submit", async function (e) {
-  e.preventDefault();
 
-  const form = new FormData(this);
-  const csrftoken = getCookie("csrftoken");
+document.getElementById("pedidoForm").addEventListener("submit", async function(e){
+
+  e.preventDefault()
+
+  const form = new FormData(this)
+  const csrftoken = getCookie("csrftoken")
 
   const data = {
     customer_name: form.get("nome"),
@@ -931,26 +938,28 @@ document.getElementById("pedidoForm").addEventListener("submit", async function 
     service_id: parseInt(form.get("servico")),
     neighborhood: form.get("bairro"),
     notes: form.get("observacao")
-  };
+  }
 
-  const res = await fetch("/api/request-service/", {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-      "X-CSRFToken": csrftoken
+  const res = await fetch("/api/request-service/",{
+    method:"POST",
+    headers:{
+      "Content-Type":"application/json",
+      "X-CSRFToken":csrftoken
     },
     body: JSON.stringify(data)
-  });
+  })
 
-  if (res.ok) {
-    alert("Solicitação enviada! Em breve entraremos em contato.");
-    this.reset();
-  } else {
-    const errorText = await res.text();
-    console.error("Erro:", errorText);
-    alert("Erro ao enviar pedido.");
+  if(res.ok){
+    alert("Solicitação enviada! Em breve entraremos em contato.")
+    this.reset()
+  }else{
+    const error = await res.text()
+    console.log(error)
+    alert("Erro ao enviar pedido.")
   }
-});
+
+})
+
 </script>
 
 

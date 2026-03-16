@@ -1,6 +1,6 @@
 from django.http import JsonResponse
 from rest_framework import viewsets, status
-from rest_framework.decorators import action
+from rest_framework.decorators import action, api_view
 from rest_framework.response import Response
 from django.shortcuts import render
 
@@ -11,12 +11,11 @@ from .serializers import (
     CustomerSerializer,
     OrderSerializer,
     OrderStatusSerializer,
+    PublicOrderRequestSerializer,
 )
-
 
 def health(request):
     return JsonResponse({"status": "ok", "app": "pitflex"})
-
 
 def _valid_transition(current: str, new: str) -> bool:
     allowed = {
@@ -88,3 +87,43 @@ class OrderViewSet(viewsets.ModelViewSet):
 
 def landing(request):
     return render(request, "landing/index.html")
+
+
+@api_view(["POST"])
+def public_order_request(request):
+    serializer = PublicOrderRequestSerializer(data=request.data)
+
+    if not serializer.is_valid():
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+    data = serializer.validated_data
+
+    # cria ou reutiliza cliente pelo telefone
+    customer, created = Customer.objects.get_or_create(
+        phone=data["phone"],
+        defaults={"name": data["customer_name"]},
+    )
+
+    # atualiza nome se mudou
+    if not created and customer.name != data["customer_name"]:
+        customer.name = data["customer_name"]
+        customer.save(update_fields=["name"])
+
+    order = Order.objects.create(
+        customer=customer,
+        service_id=data["service_id"],
+        neighborhood=data["neighborhood"],
+        address=data.get("address", "Endereço a confirmar"),
+        reference=data.get("reference", ""),
+        notes=data.get("notes", ""),
+        status=Order.Status.REQUESTED,
+    )
+
+    return Response(
+        {
+            "message": "Solicitação enviada com sucesso.",
+            "order_id": order.id,
+            "status": order.status,
+        },
+        status=status.HTTP_201_CREATED,
+    )
