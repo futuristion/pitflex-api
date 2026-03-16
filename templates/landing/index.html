@@ -602,6 +602,44 @@
       </div>
     </section>
 
+    <a class="btn btn-primary" href="#solicitar">
+    Solicitar atendimento
+    </a>
+
+    <section id="solicitar">
+  <div class="container">
+
+    <h2 class="section-title">Solicitar atendimento</h2>
+
+    <form id="pedidoForm">
+
+      <input type="text" name="nome" placeholder="Seu nome" required>
+
+      <input type="text" name="telefone" placeholder="Telefone" required>
+
+      <select name="servico" required>
+        <option value="">Selecione o serviço</option>
+        <option value="1">Troca de pneu</option>
+        <option value="2">Reparo de pneu</option>
+        <option value="3">Calibragem</option>
+        <option value="4">Rodízio de pneus</option>
+        <option value="5">Troca de bateria</option>
+        <option value="6">Carga emergencial</option>
+      </select>
+
+      <input type="text" name="bairro" placeholder="Bairro" required>
+
+      <textarea name="observacao" placeholder="Detalhes do problema"></textarea>
+
+      <button class="btn btn-primary" type="submit">
+        Enviar solicitação
+      </button>
+
+    </form>
+
+  </div>
+</section>
+
     <section id="oportunidade">
       <div class="container">
         <h2 class="section-title">Por que esse mercado importa</h2>
@@ -862,5 +900,42 @@
   <footer>
     <div class="container">PitFlex © 2026 — Plataforma de serviços automotivos sob demanda.</div>
   </footer>
+
+  <script>
+
+document.getElementById("pedidoForm").addEventListener("submit", async function(e){
+
+e.preventDefault()
+
+const form = new FormData(this)
+
+const data = {
+customer_name: form.get("nome"),
+phone: form.get("telefone"),
+service_id: form.get("servico"),
+neighborhood: form.get("bairro"),
+notes: form.get("observacao")
+}
+
+const res = await fetch("/api/orders/",{
+method:"POST",
+headers:{
+"Content-Type":"application/json"
+},
+body: JSON.stringify(data)
+})
+
+if(res.ok){
+alert("Solicitação enviada! Em breve entraremos em contato.")
+this.reset()
+}else{
+alert("Erro ao enviar pedido.")
+}
+
+})
+
+</script>
+
+
 </body>
 </html>
