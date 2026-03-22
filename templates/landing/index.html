@@ -1018,6 +1018,29 @@ document.getElementById("pedidoForm").addEventListener("submit", async function(
 </script>
 
 <script>
+document.getElementById("providerWaitlist").addEventListener("submit", async function(e){
+
+e.preventDefault()
+
+const data = Object.fromEntries(new FormData(this))
+
+await fetch("/api/waitlist/provider/",{
+method:"POST",
+headers:{
+"Content-Type":"application/json"
+},
+body: JSON.stringify(data)
+})
+
+alert("Cadastro enviado!")
+this.reset()
+
+})
+
+</script>
+
+
+<script>
 
 document.getElementById("clientWaitlist").addEventListener("submit", async function(e){
 
