@@ -575,7 +575,7 @@ Entrar na Lista de Prestadores
 
 <h2>Entrar na Lista de Clientes</h2>
 
-<form id="clientWaitlist">
+<form id="clientWaitlist"> {% csrf_token %}
 
 <input type="text" name="name" placeholder="Seu nome" required>
 
@@ -595,7 +595,7 @@ Entrar na Lista de Prestadores
 
 <h2>Entrar na Lista de Prestadores</h2>
 
-<form id="providerWaitlist">
+<form id="providerWaitlist"> {% csrf_token %}
 
 <input type="text" name="name" placeholder="Nome">
 
