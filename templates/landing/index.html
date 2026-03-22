@@ -12,14 +12,14 @@
       --blue-500: #3b82f6;
       --orange-500: #f59e0b;
       --orange-600: #ea580c;
-      --slate-100: #f8fafc;
+      --slate-50: #f8fafc;
+      --slate-100: #f1f5f9;
       --slate-200: #e2e8f0;
       --slate-300: #cbd5e1;
       --slate-600: #475569;
       --slate-700: #334155;
       --white: #ffffff;
-      --green-500: #16a34a;
-      --shadow: 0 20px 50px rgba(15, 23, 42, 0.18);
+      --shadow: 0 20px 50px rgba(15, 23, 42, 0.12);
       --radius: 22px;
       --container: 1180px;
     }
@@ -29,7 +29,7 @@
     body {
       margin: 0;
       font-family: Inter, Arial, Helvetica, sans-serif;
-      background: linear-gradient(180deg, #eff6ff 0%, #ffffff 40%, #f8fafc 100%);
+      background: linear-gradient(180deg, #eff6ff 0%, #ffffff 42%, #f8fafc 100%);
       color: var(--blue-900);
     }
 
@@ -43,17 +43,17 @@
     .topbar {
       position: sticky;
       top: 0;
-      z-index: 20;
-      background: rgba(255,255,255,0.88);
+      z-index: 30;
+      background: rgba(255, 255, 255, 0.88);
       backdrop-filter: blur(12px);
-      border-bottom: 1px solid rgba(203, 213, 225, 0.5);
+      border-bottom: 1px solid rgba(203, 213, 225, 0.55);
     }
 
     .topbar-inner {
+      min-height: 74px;
       display: flex;
       align-items: center;
       justify-content: space-between;
-      min-height: 74px;
       gap: 20px;
     }
 
@@ -73,7 +73,7 @@
       background: linear-gradient(135deg, var(--blue-700), var(--orange-500));
       display: grid;
       place-items: center;
-      color: white;
+      color: var(--white);
       font-size: 1.2rem;
       box-shadow: var(--shadow);
     }
@@ -96,17 +96,21 @@
       background: linear-gradient(135deg, var(--orange-500), var(--orange-600));
       color: var(--white);
       font-weight: 700;
-      box-shadow: 0 12px 30px rgba(234, 88, 12, 0.28);
+      box-shadow: 0 12px 30px rgba(234, 88, 12, 0.24);
+    }
+
+    main section {
+      padding: 44px 0;
     }
 
     .hero {
-      padding: 72px 0 36px;
+      padding: 70px 0 28px;
     }
 
     .hero-grid {
       display: grid;
-      grid-template-columns: 1.15fr 0.85fr;
-      gap: 36px;
+      grid-template-columns: 1.1fr 0.9fr;
+      gap: 34px;
       align-items: center;
     }
 
@@ -123,8 +127,8 @@
     }
 
     h1 {
-      font-size: clamp(2.5rem, 5vw, 4.7rem);
-      line-height: 0.96;
+      font-size: clamp(2.7rem, 5vw, 4.8rem);
+      line-height: 0.97;
       letter-spacing: -0.06em;
       margin: 0 0 18px;
     }
@@ -132,18 +136,18 @@
     .headline-accent { color: var(--orange-500); }
 
     .lead {
-      font-size: 1.15rem;
-      line-height: 1.7;
+      font-size: 1.12rem;
+      line-height: 1.72;
       color: var(--slate-700);
-      max-width: 680px;
-      margin: 0 0 28px;
+      max-width: 700px;
+      margin: 0 0 26px;
     }
 
     .hero-actions {
       display: flex;
       flex-wrap: wrap;
       gap: 14px;
-      margin-bottom: 22px;
+      margin-bottom: 18px;
     }
 
     .btn {
@@ -156,6 +160,7 @@
       font-weight: 800;
       border: 1px solid transparent;
       transition: transform 0.2s ease, box-shadow 0.2s ease;
+      cursor: pointer;
     }
 
     .btn:hover { transform: translateY(-2px); }
@@ -163,13 +168,13 @@
     .btn-primary {
       background: linear-gradient(135deg, var(--blue-700), var(--blue-500));
       color: var(--white);
-      box-shadow: 0 18px 35px rgba(29, 78, 216, 0.28);
+      box-shadow: 0 18px 35px rgba(29, 78, 216, 0.24);
     }
 
     .btn-secondary {
       background: var(--white);
-      border-color: var(--slate-300);
       color: var(--blue-900);
+      border-color: var(--slate-300);
     }
 
     .hero-bullets {
@@ -184,7 +189,7 @@
     .hero-bullets span {
       padding: 10px 14px;
       border-radius: 999px;
-      background: rgba(255,255,255,0.86);
+      background: rgba(255, 255, 255, 0.86);
       border: 1px solid var(--slate-200);
     }
 
@@ -201,7 +206,7 @@
 
     .hero-card::before,
     .hero-card::after {
-      content: ""; 
+      content: "";
       position: absolute;
       border-radius: 999px;
       filter: blur(8px);
@@ -228,7 +233,7 @@
       display: inline-flex;
       padding: 8px 12px;
       border-radius: 999px;
-      background: rgba(255,255,255,0.14);
+      background: rgba(255, 255, 255, 0.14);
       font-size: 0.88rem;
       font-weight: 700;
       margin-bottom: 18px;
@@ -244,8 +249,8 @@
     .service-box {
       padding: 18px;
       border-radius: 20px;
-      background: rgba(255,255,255,0.09);
-      border: 1px solid rgba(255,255,255,0.12);
+      background: rgba(255, 255, 255, 0.09);
+      border: 1px solid rgba(255, 255, 255, 0.12);
     }
 
     .service-box h4 {
@@ -257,7 +262,7 @@
       margin: 0;
       font-size: 0.92rem;
       line-height: 1.5;
-      color: rgba(255,255,255,0.8);
+      color: rgba(255, 255, 255, 0.82);
     }
 
     .mini-flow {
@@ -272,8 +277,8 @@
       align-items: flex-start;
       padding: 14px;
       border-radius: 16px;
-      background: rgba(255,255,255,0.08);
-      border: 1px solid rgba(255,255,255,0.12);
+      background: rgba(255, 255, 255, 0.08);
+      border: 1px solid rgba(255, 255, 255, 0.12);
     }
 
     .step-num {
@@ -287,22 +292,18 @@
       font-weight: 800;
     }
 
-    section {
-      padding: 36px 0;
-    }
-
     .section-title {
-      font-size: clamp(1.8rem, 3vw, 2.8rem);
+      font-size: clamp(1.9rem, 3vw, 2.9rem);
       letter-spacing: -0.05em;
       margin: 0 0 14px;
     }
 
     .section-subtitle {
-      max-width: 760px;
-      line-height: 1.7;
+      max-width: 780px;
+      line-height: 1.72;
       color: var(--slate-700);
       margin: 0 0 30px;
-      font-size: 1.05rem;
+      font-size: 1.04rem;
     }
 
     .cards {
@@ -316,7 +317,7 @@
       border-radius: var(--radius);
       padding: 24px;
       box-shadow: var(--shadow);
-      border: 1px solid rgba(203, 213, 225, 0.5);
+      border: 1px solid rgba(203, 213, 225, 0.55);
     }
 
     .card-icon {
@@ -332,40 +333,14 @@
 
     .card h3 {
       margin: 0 0 10px;
-      font-size: 1.1rem;
+      font-size: 1.08rem;
     }
 
     .card p {
       margin: 0;
       color: var(--slate-700);
       line-height: 1.65;
-      font-size: 0.97rem;
-    }
-
-    .how-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 18px;
-    }
-
-    .how-step {
-      background: linear-gradient(180deg, #ffffff, #f8fafc);
-      border: 1px solid rgba(203,213,225,0.55);
-      border-radius: 26px;
-      padding: 24px;
-      box-shadow: var(--shadow);
-    }
-
-    .how-badge {
-      width: 46px;
-      height: 46px;
-      border-radius: 16px;
-      background: linear-gradient(135deg, var(--blue-700), var(--orange-500));
-      color: var(--white);
-      display: grid;
-      place-items: center;
-      font-weight: 800;
-      margin-bottom: 14px;
+      font-size: 0.96rem;
     }
 
     .audience {
@@ -376,7 +351,7 @@
 
     .audience-box {
       background: var(--white);
-      border: 1px solid rgba(203,213,225,0.55);
+      border: 1px solid rgba(203, 213, 225, 0.55);
       border-radius: 26px;
       padding: 28px;
       box-shadow: var(--shadow);
@@ -389,8 +364,52 @@
       line-height: 1.9;
     }
 
+    .forms-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 20px;
+    }
+
+    .form-card {
+      background: var(--white);
+      border: 1px solid rgba(203, 213, 225, 0.55);
+      border-radius: 26px;
+      padding: 28px;
+      box-shadow: var(--shadow);
+    }
+
+    .form-card form {
+      display: grid;
+      gap: 12px;
+      margin-top: 18px;
+    }
+
+    .form-card input,
+    .form-card select,
+    .form-card textarea {
+      width: 100%;
+      padding: 14px 16px;
+      border-radius: 14px;
+      border: 1px solid var(--slate-300);
+      background: var(--white);
+      font: inherit;
+      color: var(--blue-900);
+    }
+
+    .form-card textarea {
+      min-height: 112px;
+      resize: vertical;
+    }
+
+    .stacked-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+      margin-top: 18px;
+    }
+
     .cta-section {
-      padding: 50px 0 70px;
+      padding: 50px 0 74px;
     }
 
     .cta-panel {
@@ -433,10 +452,10 @@
 
     @media (max-width: 1080px) {
       .hero-grid,
-      .cta-panel,
       .cards,
-      .how-grid,
-      .audience {
+      .audience,
+      .forms-grid,
+      .cta-panel {
         grid-template-columns: 1fr;
       }
 
@@ -446,27 +465,24 @@
     }
 
     @media (max-width: 760px) {
-      .nav {
+      .nav,
+      .cta-top {
         display: none;
       }
 
       .hero {
-        padding-top: 46px;
+        padding-top: 48px;
       }
 
       .service-grid,
       .cards,
-      .how-grid,
-      .audience {
+      .audience,
+      .forms-grid {
         grid-template-columns: 1fr;
       }
 
       .hero-card {
         min-height: auto;
-      }
-
-      .cta-top {
-        display: none;
       }
     }
   </style>
@@ -480,11 +496,12 @@
       </a>
       <nav class="nav">
         <a href="#servicos">Serviços</a>
-        <a href="#como-funciona">Como funciona</a>
-        <a href="#parceiros">Profissionais</a>
+        <a href="#solicitar">Solicitar</a>
+        <a href="#listas">Listas</a>
+        <a href="#mercado">Mercado</a>
         <a href="#contato">Contato</a>
       </nav>
-      <a class="cta-top" href="#contato">Quero saber mais</a>
+      <a class="cta-top" href="#solicitar">Solicitar atendimento</a>
     </div>
   </header>
 
@@ -492,34 +509,26 @@
     <section class="hero" id="inicio">
       <div class="container hero-grid">
         <div>
-          <br></br>
           <div class="hero-actions">
+            <a class="btn btn-primary" href="#lista-clientes">Entrar na Lista de Clientes</a>
+            <a class="btn btn-secondary" href="#lista-prestadores">Entrar na Lista de Prestadores</a>
+          </div>
 
-<a class="btn btn-primary" href="#lista-clientes">
-Entrar na Lista de Clientes
-</a>
-
-<a class="btn btn-secondary" href="#lista-prestadores">
-Entrar na Lista de Prestadores
-</a>
-
-</div>
-          <br></br>
-           <a class="btn btn-primary" href="#solicitar">
-              Solicitar atendimento
-          </a>
-          <br></br>
+          <div class="hero-actions">
+            <a class="btn btn-primary" href="#solicitar">Solicitar atendimento</a>
+          </div>
 
           <div class="eyebrow">⚡ Mobilidade prática, atendimento rápido e operação inteligente</div>
           <h1>O cuidado automotivo que <span class="headline-accent">vai até você</span>.</h1>
           <p class="lead">
             A PitFlex leva serviços automotivos até você, conectando clientes e profissionais para resolver pneus, bateria, calibragem e atendimentos rápidos no local. Um modelo prático, urbano e escalável para um mercado recorrente e urgente.
-          </p>orrente e urgente.
           </p>
+
           <div class="hero-actions">
             <a class="btn btn-primary" href="#contato">Falar sobre o projeto</a>
             <a class="btn btn-secondary" href="#servicos">Ver principais serviços</a>
           </div>
+
           <div class="hero-bullets">
             <span>✅ Atendimento sob demanda</span>
             <span>✅ Serviços automotivos no local</span>
@@ -571,53 +580,14 @@ Entrar na Lista de Prestadores
       </div>
     </section>
 
-    <section id="lista-clientes">
-
-<h2>Entrar na Lista de Clientes</h2>
-
-<form id="clientWaitlist"> {% csrf_token %}
-
-<input type="text" name="name" placeholder="Seu nome" required>
-
-<input type="text" name="phone" placeholder="Telefone" required>
-
-<input type="email" name="email" placeholder="Email">
-
-<input type="text" name="neighborhood" placeholder="Bairro">
-
-<button type="submit">Quero ser avisado</button>
-
-</form>
-
-</section>
-
-<section id="lista-prestadores">
-
-<h2>Entrar na Lista de Prestadores</h2>
-
-<form id="providerWaitlist"> {% csrf_token %}
-
-<input type="text" name="name" placeholder="Nome">
-
-<input type="text" name="phone" placeholder="Telefone">
-
-<input type="email" name="email" placeholder="Email">
-
-<input type="text" name="service_type" placeholder="Serviço que realiza">
-
-<input type="text" name="neighborhood" placeholder="Bairro">
-
-<button type="submit">Quero prestar serviço</button>
-
-</form>
-
-</section>
-
     <section id="servicos">
       <div class="container">
         <h2 class="section-title">Principais serviços do PitFlex</h2>
         <p class="section-subtitle">
-          O foco inicial do MVP é resolver demandas automotivas rápidas, práticas e recorrentes, começando pelos serviços que mais geram urgência, conveniência e operação no <div class="cards">
+          O foco inicial do MVP é resolver demandas automotivas rápidas, práticas e recorrentes, começando pelos serviços que mais geram urgência, conveniência e operação no dia a dia.
+        </p>
+
+        <div class="cards">
           <article class="card">
             <div class="card-icon">🛞</div>
             <h3>Troca de pneu</h3>
@@ -663,39 +633,75 @@ Entrar na Lista de Prestadores
     </section>
 
     <section id="solicitar">
-  <div class="container">
+      <div class="container">
+        <h2 class="section-title">Solicitar atendimento</h2>
+        <p class="section-subtitle">
+          Conte rapidamente o problema e o PitFlex registra sua solicitação para organizar o atendimento.
+        </p>
 
-    <h2 class="section-title">Solicitar atendimento</h2>
+        <div class="form-card">
+          <form id="pedidoForm">
+            {% csrf_token %}
+            <input type="text" name="nome" placeholder="Seu nome" required>
+            <input type="text" name="telefone" placeholder="Telefone" required>
+            <select name="servico" required>
+              <option value="">Selecione o serviço</option>
+              <option value="1">Troca de pneu</option>
+              <option value="2">Reparo de pneu</option>
+              <option value="3">Calibragem</option>
+              <option value="4">Rodízio de pneus</option>
+              <option value="5">Troca de bateria</option>
+              <option value="6">Carga emergencial</option>
+            </select>
+            <input type="text" name="bairro" placeholder="Bairro" required>
+            <textarea name="observacao" placeholder="Detalhes do problema"></textarea>
+            <button class="btn btn-primary" type="submit">Enviar solicitação</button>
+          </form>
+        </div>
+      </div>
+    </section>
 
-    <form id="pedidoForm">
-  {% csrf_token %}
+    <section id="listas">
+      <div class="container">
+        <h2 class="section-title">Estamos formando a rede inicial do PitFlex</h2>
+        <p class="section-subtitle">
+          Clientes podem entrar na lista para ser avisados quando a operação estiver ativa em sua região. Prestadores podem se cadastrar para participar da rede inicial de atendimento.
+        </p>
 
-  <input type="text" name="nome" placeholder="Seu nome" required>
+        <div class="forms-grid">
+          <div class="form-card" id="lista-clientes">
+            <h3>Entrar na Lista de Clientes</h3>
+            <p class="section-subtitle" style="margin-bottom:16px; font-size:0.98rem; max-width:none;">
+              Seja avisado quando o PitFlex estiver ativo no seu bairro.
+            </p>
+            <form id="clientWaitlist">
+              {% csrf_token %}
+              <input type="text" name="name" placeholder="Seu nome" required>
+              <input type="text" name="phone" placeholder="Telefone" required>
+              <input type="email" name="email" placeholder="Email">
+              <input type="text" name="neighborhood" placeholder="Bairro">
+              <button class="btn btn-primary" type="submit">Quero ser avisado</button>
+            </form>
+          </div>
 
-  <input type="text" name="telefone" placeholder="Telefone" required>
-
-  <select name="servico" required>
-    <option value="">Selecione o serviço</option>
-    <option value="1">Troca de pneu</option>
-    <option value="2">Reparo de pneu</option>
-    <option value="3">Calibragem</option>
-    <option value="4">Rodízio de pneus</option>
-    <option value="5">Troca de bateria</option>
-    <option value="6">Carga emergencial</option>
-  </select>
-
-  <input type="text" name="bairro" placeholder="Bairro" required>
-
-  <textarea name="observacao" placeholder="Detalhes do problema"></textarea>
-
-  <button class="btn btn-primary" type="submit">
-    Enviar solicitação
-  </button>
-
-</form>
-
-  </div>
-</section>
+          <div class="form-card" id="lista-prestadores">
+            <h3>Entrar na Lista de Prestadores</h3>
+            <p class="section-subtitle" style="margin-bottom:16px; font-size:0.98rem; max-width:none;">
+              Cadastre-se para participar da rede inicial de profissionais do PitFlex.
+            </p>
+            <form id="providerWaitlist">
+              {% csrf_token %}
+              <input type="text" name="name" placeholder="Nome" required>
+              <input type="text" name="phone" placeholder="Telefone" required>
+              <input type="email" name="email" placeholder="Email">
+              <input type="text" name="service_type" placeholder="Serviço que realiza" required>
+              <input type="text" name="neighborhood" placeholder="Bairro" required>
+              <button class="btn btn-primary" type="submit">Quero prestar serviço</button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
 
     <section id="oportunidade">
       <div class="container">
@@ -723,235 +729,93 @@ Entrar na Lista de Prestadores
           </div>
         </div>
       </div>
-    </section><article class="card">
-            <div class="card-icon">🔋</div>
-            <h3>Troca de bateria</h3>
-            <p>Substituição da bateria no local com atendimento direto, rápido e conveniente.</p>
+    </section>
+
+    <section id="mvp">
+      <div class="container">
+        <h2 class="section-title">MVP em desenvolvimento ativo</h2>
+        <div class="cards">
+          <article class="card">
+            <div class="card-icon">🌐</div>
+            <h3>Plataforma online</h3>
+            <p>O PitFlex já possui domínio próprio e estrutura de backend funcionando para testes e evolução do produto.</p>
           </article>
           <article class="card">
-            <div class="card-icon">⚡</div>
-            <h3>Carga emergencial</h3>
-            <p>Socorro rápido para veículos com bateria descarregada e necessidade imediata de partida.</p>
+            <div class="card-icon">⚙️</div>
+            <h3>Painel administrativo</h3>
+            <p>Sistema de gestão com cadastro de serviços, profissionais e pedidos para validar a operação.</p>
           </article>
+          <article class="card">
+            <div class="card-icon">🔧</div>
+            <h3>Fluxo operacional</h3>
+            <p>O MVP já permite criar pedidos, atribuir profissionais e acompanhar o status do atendimento.</p>
+          </article>
+          <article class="card">
+            <div class="card-icon">📬</div>
+            <h3>Captação de interesse</h3>
+            <p>Clientes e prestadores já podem se cadastrar para participar do início da operação do PitFlex.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="visao">
+      <div class="container">
+        <h2 class="section-title">A visão do PitFlex</h2>
+        <p class="section-subtitle">
+          O objetivo do PitFlex é organizar serviços automotivos rápidos em uma plataforma urbana de atendimento sob demanda. Começando com pneus e bateria, o modelo pode expandir para diversos serviços de manutenção e assistência automotiva.
+        </p>
+
+        <div class="cards">
           <article class="card">
             <div class="card-icon">🏙️</div>
-            <h3>Atendimento urbano</h3>
-            <p>Operação pensada para bairros com alta circulação, urgência e recorrência de demanda.</p>
+            <h3>Expansão por cidade</h3>
+            <p>O modelo pode ser replicado em diferentes regiões, conectando profissionais locais e clientes.</p>
           </article>
           <article class="card">
-            <div class="card-icon">📈</div>
-            <h3>Modelo escalável</h3>
-            <p>Estrutura preparada para crescer por regiões, parceiros, serviços complementares e recorrência.</p>
+            <div class="card-icon">🤝</div>
+            <h3>Rede de parceiros</h3>
+            <p>Oficinas, borracharias e técnicos podem atuar como parceiros dentro da plataforma.</p>
+          </article>
+          <article class="card">
+            <div class="card-icon">🚀</div>
+            <h3>Escala de serviços</h3>
+            <p>A estrutura permite incluir novos serviços automotivos e ampliar a operação ao longo do tempo.</p>
+          </article>
+          <article class="card">
+            <div class="card-icon">🏁</div>
+            <h3>Pit stop da vida real</h3>
+            <p>Uma proposta simples: quando o carro parar, o PitFlex ajuda você a voltar para a pista do dia a dia.</p>
           </article>
         </div>
       </div>
     </section>
 
-    <section id="oportunidade">
+    <section class="cta-section" id="contato">
       <div class="container">
-        <h2 class="section-title">Por que esse mercado importa</h2>
-        <p class="section-subtitle">
-          Pane, pneu furado e bateria descarregada acontecem todos os dias<section id="parceiros">
-      <div class="container">
-        <h2 class="section-title">MVP em operação</h2>
-        <p class="section-subtitle">
-          O PitFlex já está estruturado como MVP funcional, com base operacional pronta para demonstração, testes e evolução comercial.
-        </p>
-
-        <div class="audience">
-          <div class="audience-box">
-            <h3>O que já existe hoje</h3>
-            <ul>
-              <li>Plataforma online com domínio próprio.</li>
-              <li>Painel administrativo ativo.</li>
-              <li>Serviços, profissionais e pedidos cadastráveis.</li>
-              <li>Fluxo básico de solicitação, aceite e status funcionando.</li>
-            </ul>
+        <div class="cta-panel">
+          <div>
+            <h2 class="section-title" style="color:white; margin-top:0;">Quer saber mais sobre o PitFlex?</h2>
+            <p class="section-subtitle" style="color:rgba(255,255,255,0.84); margin-bottom:0;">
+              O projeto já está online, com MVP em andamento e uma proposta clara de validação operacional. Se você gostou do conceito e quer conhecer melhor o modelo, a estrutura e as possibilidades de expansão, este é o momento certo para conversar.
+            </p>
           </div>
-          <div class="audience-box">
-            <h3>Por que o PitFlex é uma oportunidade</h3>
-            <ul>
-              <li>Demanda real, recorrente e urgente.</li>
-              <li>Modelo validável localmente com baixo atrito operacional.</li>
-              <li>Potencial de expansão por cidade e rede de parceiros.</li>
-              <li>Base pronta para assinatura, recorrência e novos serviços.</li>
-            </ul>
+
+          <div class="contact-card">
+            <strong style="font-size:1.12rem;">Contato comercial</strong>
+            <div class="contact-list">
+              <div class="contact-item">📞 WhatsApp: [preencher contato]</div>
+              <div class="contact-item">📩 E-mail: contato@pitflex.com.br</div>
+              <div class="contact-item">🌐 pitflex.com.br</div>
+            </div>
+            <div class="stacked-links">
+              <a class="btn btn-primary" href="mailto:contato@pitflex.com.br">Quero conhecer o projeto</a>
+              <a class="btn btn-secondary" href="#oportunidade">Ver oportunidade</a>
+            </div>
           </div>
         </div>
       </div>
     </section>
-
-    <section id="mercado">
-  <div class="container">
-    <h2 class="section-title">Uma oportunidade em um mercado recorrente</h2>
-
-    <p class="section-subtitle">
-      Pneus furados, bateria descarregada e pequenas manutenções acontecem todos os dias.
-      O PitFlex organiza essa demanda em uma plataforma prática que conecta clientes
-      e profissionais para atendimentos rápidos no local.
-    </p>
-
-    <div class="cards">
-
-      <article class="card">
-        <div class="card-icon">🚗</div>
-        <h3>Problema recorrente</h3>
-        <p>
-          Pane de bateria, pneus e pequenas emergências fazem parte da rotina urbana
-          e geram demanda constante por atendimento rápido.
-        </p>
-      </article>
-
-      <article class="card">
-        <div class="card-icon">📱</div>
-        <h3>Solução simples</h3>
-        <p>
-          Uma plataforma que organiza pedidos, conecta profissionais e acompanha
-          o atendimento em tempo real.
-        </p>
-      </article>
-
-      <article class="card">
-        <div class="card-icon">📈</div>
-        <h3>Modelo escalável</h3>
-        <p>
-          O mesmo modelo pode ser replicado em diferentes bairros e cidades
-          com rede de profissionais parceiros.
-        </p>
-      </article>
-
-    </div>
-  </div>
-</section>
-
-<section id="mvp">
-  <div class="container">
-    <h2 class="section-title">MVP em desenvolvimento ativo</h2>
-
-    <div class="cards">
-
-      <article class="card">
-        <div class="card-icon">🌐</div>
-        <h3>Plataforma online</h3>
-        <p>
-          O PitFlex já possui domínio próprio e estrutura de backend
-          funcionando para testes e evolução do produto.
-        </p>
-      </article>
-
-      <article class="card">
-        <div class="card-icon">⚙️</div>
-        <h3>Painel administrativo</h3>
-        <p>
-          Sistema de gestão com cadastro de serviços, profissionais e pedidos
-          para validar a operação.
-        </p>
-      </article>
-
-      <article class="card">
-        <div class="card-icon">🔧</div>
-        <h3>Fluxo operacional</h3>
-        <p>
-          O MVP já permite criar pedidos, atribuir profissionais e acompanhar
-          o status do atendimento.
-        </p>
-      </article>
-
-    </div>
-  </div>
-</section>
-
-<section id="visao">
-  <div class="container">
-    <h2 class="section-title">A visão do PitFlex</h2>
-
-    <p class="section-subtitle">
-      O objetivo do PitFlex é organizar serviços automotivos rápidos
-      em uma plataforma urbana de atendimento sob demanda.
-      Começando com pneus e bateria, o modelo pode expandir para
-      diversos serviços de manutenção e assistência automotiva.
-    </p>
-
-    <div class="cards">
-
-      <article class="card">
-        <div class="card-icon">🏙️</div>
-        <h3>Expansão por cidade</h3>
-        <p>
-          O modelo pode ser replicado em diferentes regiões,
-          conectando profissionais locais e clientes.
-        </p>
-      </article>
-
-      <article class="card">
-        <div class="card-icon">🤝</div>
-        <h3>Rede de parceiros</h3>
-        <p>
-          Oficinas, borracharias e técnicos podem atuar como parceiros
-          dentro da plataforma.
-        </p>
-      </article>
-
-      <article class="card">
-        <div class="card-icon">🚀</div>
-        <h3>Escala de serviços</h3>
-        <p>
-          A estrutura permite incluir novos serviços automotivos
-          e ampliar a operação ao longo do tempo.
-        </p>
-      </article>
-
-    </div>
-  </div>
-</section>
-
-    
-    <p>inteligente: operação controlada, validação de demanda e expansão organizada. Primeiro o motor gira, depois o turbo entra.
-        </p>
-
-        <div class="how-grid">
-          <article class="how-step">
-            <div class="how-badge">1</div>
-            <h3>Solicitação do atendimento</h3>
-            <p>O cliente informa o serviço, local e necessidade. O sistema organiza a demanda e centraliza o pedido.</p>
-          </article>
-          <article class="how-step">
-            <div class="how-badge">2</div>
-            <h3>Encaminhamento operacional</h3>
-            <p>O pedido é direcionado para um profissional ou parceiro adequado, com controle simples e rastreável.</p>
-          </article>
-          <article class="how-step">
-            <div class="how-badge">3</div>
-            <h3>Atendimento📞 WhatsApp:     <p>O serviço acontece no local e o fluxo segue até a conclusão, abrindo espaço para escala, assinatura e recorrência.</p>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <section id="parceiros">
-  <div class="container">
-
-    <h2 class="section-title">Quer saber mais sobre o PitFlex?</h2>
-
-    <p class="section-subtitle">
-      O projeto já está online, com MVP em andamento e uma proposta clara de validação operacional.
-      Se você gostou do conceito e quer conhecer melhor o modelo, a estrutura e as possibilidades
-      de expansão, este é o momento certo para conversar.
-    </p>
-
-    <div class="hero-actions">
-      <a class="btn btn-primary" href="#">
-        Quero conhecer o projeto
-      </a>
-
-      <a class="btn btn-secondary" href="#oportunidade">
-        Ver oportunidade
-      </a>
-    </div>
-
-  </div>
-</section>
-
   </main>
 
   <footer>
@@ -959,130 +823,102 @@ Entrar na Lista de Prestadores
   </footer>
 
   <script>
-
-function getCookie(name) {
-  let cookieValue = null;
-
-  if (document.cookie && document.cookie !== "") {
-    const cookies = document.cookie.split(";");
-
-    for (let i = 0; i < cookies.length; i++) {
-      const cookie = cookies[i].trim();
-
-      if (cookie.substring(0, name.length + 1) === (name + "=")) {
-        cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
-        break;
+    function getCookie(name) {
+      let cookieValue = null;
+      if (document.cookie && document.cookie !== "") {
+        const cookies = document.cookie.split(";");
+        for (let i = 0; i < cookies.length; i++) {
+          const cookie = cookies[i].trim();
+          if (cookie.substring(0, name.length + 1) === (name + "=")) {
+            cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+            break;
+          }
+        }
       }
+      return cookieValue;
     }
-  }
 
-  return cookieValue;
-}
+    document.getElementById("pedidoForm").addEventListener("submit", async function (e) {
+      e.preventDefault();
+      const form = new FormData(this);
+      const csrftoken = getCookie("csrftoken");
 
+      const data = {
+        customer_name: form.get("nome"),
+        phone: form.get("telefone"),
+        service_id: parseInt(form.get("servico"), 10),
+        neighborhood: form.get("bairro"),
+        notes: form.get("observacao")
+      };
 
-document.getElementById("pedidoForm").addEventListener("submit", async function(e){
+      const res = await fetch("/api/request-service/", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          "X-CSRFToken": csrftoken
+        },
+        body: JSON.stringify(data)
+      });
 
-  e.preventDefault()
+      if (res.ok) {
+        alert("Solicitação enviada! Em breve entraremos em contato.");
+        this.reset();
+      } else {
+        const error = await res.text();
+        console.log(error);
+        alert("Erro ao enviar pedido.");
+      }
+    });
 
-  const form = new FormData(this)
-  const csrftoken = getCookie("csrftoken")
+    document.getElementById("providerWaitlist").addEventListener("submit", async function (e) {
+      e.preventDefault();
+      const form = new FormData(this);
+      const csrftoken = getCookie("csrftoken");
+      const data = Object.fromEntries(form);
 
-  const data = {
-    customer_name: form.get("nome"),
-    phone: form.get("telefone"),
-    service_id: parseInt(form.get("servico")),
-    neighborhood: form.get("bairro"),
-    notes: form.get("observacao")
-  }
+      const res = await fetch("/api/waitlist/provider/", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          "X-CSRFToken": csrftoken
+        },
+        body: JSON.stringify(data)
+      });
 
-  const res = await fetch("/api/request-service/",{
-    method:"POST",
-    headers:{
-      "Content-Type":"application/json",
-      "X-CSRFToken":csrftoken
-    },
-    body: JSON.stringify(data)
-  })
+      if (res.ok) {
+        alert("Cadastro enviado com sucesso!");
+        this.reset();
+      } else {
+        const error = await res.text();
+        console.log(error);
+        alert("Erro ao cadastrar prestador.");
+      }
+    });
 
-  if(res.ok){
-    alert("Solicitação enviada! Em breve entraremos em contato.")
-    this.reset()
-  }else{
-    const error = await res.text()
-    console.log(error)
-    alert("Erro ao enviar pedido.")
-  }
+    document.getElementById("clientWaitlist").addEventListener("submit", async function (e) {
+      e.preventDefault();
+      const form = new FormData(this);
+      const csrftoken = getCookie("csrftoken");
+      const data = Object.fromEntries(form);
 
-})
+      const res = await fetch("/api/waitlist/client/", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          "X-CSRFToken": csrftoken
+        },
+        body: JSON.stringify(data)
+      });
 
-</script>
-
-<script>
-document.getElementById("providerWaitlist").addEventListener("submit", async function(e){
-
-  e.preventDefault()
-
-  const form = new FormData(this)
-  const csrftoken = getCookie("csrftoken")
-
-  const data = Object.fromEntries(form)
-
-  const res = await fetch("/api/waitlist/provider/",{
-    method:"POST",
-    headers:{
-      "Content-Type":"application/json",
-      "X-CSRFToken": csrftoken
-    },
-    body: JSON.stringify(data)
-  })
-
-  if(res.ok){
-    alert("Cadastro enviado com sucesso!")
-    this.reset()
-  }else{
-    const error = await res.text()
-    console.log(error)
-    alert("Erro ao cadastrar prestador.")
-  }
-
-})
-
-</script>
-
-
-<script>
-
-document.getElementById("clientWaitlist").addEventListener("submit", async function(e){
-
-  e.preventDefault()
-
-  const form = new FormData(this)
-  const csrftoken = getCookie("csrftoken")
-
-  const data = Object.fromEntries(form)
-
-  const res = await fetch("/api/waitlist/client/",{
-    method:"POST",
-    headers:{
-      "Content-Type":"application/json",
-      "X-CSRFToken": csrftoken
-    },
-    body: JSON.stringify(data)
-  })
-
-  if(res.ok){
-    alert("Você entrou na lista!")
-    this.reset()
-  }else{
-    const error = await res.text()
-    console.log(error)
-    alert("Erro ao cadastrar.")
-  }
-
-})
-
-</script>
-
-
+      if (res.ok) {
+        alert("Você entrou na lista!");
+        this.reset();
+      } else {
+        const error = await res.text();
+        console.log(error);
+        alert("Erro ao cadastrar.");
+      }
+    });
+  </script>
 </body>
 </html>
