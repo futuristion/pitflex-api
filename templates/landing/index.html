@@ -1020,20 +1020,30 @@ document.getElementById("pedidoForm").addEventListener("submit", async function(
 <script>
 document.getElementById("providerWaitlist").addEventListener("submit", async function(e){
 
-e.preventDefault()
+  e.preventDefault()
 
-const data = Object.fromEntries(new FormData(this))
+  const form = new FormData(this)
+  const csrftoken = getCookie("csrftoken")
 
-await fetch("/api/waitlist/provider/",{
-method:"POST",
-headers:{
-"Content-Type":"application/json"
-},
-body: JSON.stringify(data)
-})
+  const data = Object.fromEntries(form)
 
-alert("Cadastro enviado!")
-this.reset()
+  const res = await fetch("/api/waitlist/provider/",{
+    method:"POST",
+    headers:{
+      "Content-Type":"application/json",
+      "X-CSRFToken": csrftoken
+    },
+    body: JSON.stringify(data)
+  })
+
+  if(res.ok){
+    alert("Cadastro enviado com sucesso!")
+    this.reset()
+  }else{
+    const error = await res.text()
+    console.log(error)
+    alert("Erro ao cadastrar prestador.")
+  }
 
 })
 
@@ -1044,20 +1054,30 @@ this.reset()
 
 document.getElementById("clientWaitlist").addEventListener("submit", async function(e){
 
-e.preventDefault()
+  e.preventDefault()
 
-const data = Object.fromEntries(new FormData(this))
+  const form = new FormData(this)
+  const csrftoken = getCookie("csrftoken")
 
-await fetch("/api/waitlist/client/",{
-method:"POST",
-headers:{
-"Content-Type":"application/json"
-},
-body: JSON.stringify(data)
-})
+  const data = Object.fromEntries(form)
 
-alert("Você entrou na lista!")
-this.reset()
+  const res = await fetch("/api/waitlist/client/",{
+    method:"POST",
+    headers:{
+      "Content-Type":"application/json",
+      "X-CSRFToken": csrftoken
+    },
+    body: JSON.stringify(data)
+  })
+
+  if(res.ok){
+    alert("Você entrou na lista!")
+    this.reset()
+  }else{
+    const error = await res.text()
+    console.log(error)
+    alert("Erro ao cadastrar.")
+  }
 
 })
 
