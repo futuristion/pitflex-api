@@ -661,7 +661,7 @@ color: #d4d4d4;
             <p class="section-subtitle" style="margin-bottom:16px; font-size:0.98rem; max-width:none;">
               Seja avisado quando o PitFlex estiver ativo no seu bairro.
             </p>
-            <form id="clientWaitlist">
+            <form id="clientWaitlist" method="post">
               {% csrf_token %}
               <input type="text" name="name" placeholder="Seu nome" required>
               <input type="text" name="phone" placeholder="Telefone" required>
@@ -678,7 +678,7 @@ color: #d4d4d4;
             <p class="section-subtitle" style="margin-bottom:16px; font-size:0.98rem; max-width:none;">
               Cadastre-se para participar da rede inicial de profissionais do PitFlex.
             </p>
-            <form id="providerWaitlist">
+            <form id="providerWaitlist" method="post">
               {% csrf_token %}
               <input type="text" name="name" placeholder="Nome" required>
               <input type="text" name="phone" placeholder="Telefone" required>
@@ -763,23 +763,27 @@ color: #d4d4d4;
   </footer>
 
   <script>
-    function getCookie(name) {
-      let cookieValue = null;
-      if (document.cookie && document.cookie !== "") {
-        const cookies = document.cookie.split(";");
-        for (let i = 0; i < cookies.length; i++) {
-          const cookie = cookies[i].trim();
-          if (cookie.substring(0, name.length + 1) === (name + "=")) {
-            cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
-            break;
-          }
+  function getCookie(name) {
+    let cookieValue = null;
+    if (document.cookie && document.cookie !== "") {
+      const cookies = document.cookie.split(";");
+      for (let i = 0; i < cookies.length; i++) {
+        const cookie = cookies[i].trim();
+        if (cookie.substring(0, name.length + 1) === (name + "=")) {
+          cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+          break;
         }
       }
-      return cookieValue;
     }
+    return cookieValue;
+  }
 
-    document.getElementById("pedidoForm").addEventListener("submit", async function (e) {
+  const pedidoForm = document.getElementById("pedidoForm");
+
+  if (pedidoForm) {
+    pedidoForm.addEventListener("submit", async function (e) {
       e.preventDefault();
+
       const form = new FormData(this);
       const csrftoken = getCookie("csrftoken");
 
@@ -788,8 +792,8 @@ color: #d4d4d4;
         phone: form.get("telefone"),
         service_id: parseInt(form.get("servico"), 10),
         neighborhood: form.get("bairro"),
-        city: form.get("cidade"),
-        country: form.get("pais"),
+        city: form.get("cidade") || form.get("city"),
+        country: form.get("pais") || form.get("country"),
         notes: form.get("observacao")
       };
 
@@ -811,12 +815,26 @@ color: #d4d4d4;
         alert("Erro ao enviar pedido.");
       }
     });
+  }
 
-    document.getElementById("providerWaitlist").addEventListener("submit", async function (e) {
+  const providerWaitlist = document.getElementById("providerWaitlist");
+
+  if (providerWaitlist) {
+    providerWaitlist.addEventListener("submit", async function (e) {
       e.preventDefault();
+
       const form = new FormData(this);
       const csrftoken = getCookie("csrftoken");
-      const data = Object.fromEntries(form);
+
+      const data = {
+        name: form.get("name"),
+        phone: form.get("phone"),
+        email: form.get("email"),
+        service_type: form.get("service_type"),
+        neighborhood: form.get("neighborhood"),
+        city: form.get("cidade") || form.get("city"),
+        country: form.get("pais") || form.get("country")
+      };
 
       const res = await fetch("/api/waitlist/provider/", {
         method: "POST",
@@ -836,12 +854,25 @@ color: #d4d4d4;
         alert("Erro ao cadastrar prestador.");
       }
     });
+  }
 
-    document.getElementById("clientWaitlist").addEventListener("submit", async function (e) {
+  const clientWaitlist = document.getElementById("clientWaitlist");
+
+  if (clientWaitlist) {
+    clientWaitlist.addEventListener("submit", async function (e) {
       e.preventDefault();
+
       const form = new FormData(this);
       const csrftoken = getCookie("csrftoken");
-      const data = Object.fromEntries(form);
+
+      const data = {
+        name: form.get("name"),
+        phone: form.get("phone"),
+        email: form.get("email"),
+        neighborhood: form.get("neighborhood"),
+        city: form.get("cidade") || form.get("city"),
+        country: form.get("pais") || form.get("country")
+      };
 
       const res = await fetch("/api/waitlist/client/", {
         method: "POST",
@@ -861,6 +892,7 @@ color: #d4d4d4;
         alert("Erro ao cadastrar.");
       }
     });
-  </script>
+  }
+</script>
 </body>
 </html>
