@@ -73,6 +73,8 @@ class ClientWaitlist(models.Model):
     phone = models.CharField(max_length=30)
     email = models.EmailField(blank=True)
     neighborhood = models.CharField(max_length=80)
+    city = models.CharField(max_length=100)
+    country = models.CharField(max_length=100, default="Brasil")
     created_at = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
@@ -85,6 +87,8 @@ class ProviderWaitlist(models.Model):
     email = models.EmailField(blank=True)
     service_type = models.CharField(max_length=120)
     neighborhood = models.CharField(max_length=80)
+    city = models.CharField(max_length=100)
+    country = models.CharField(max_length=100, default="Brasil")
     created_at = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):

@@ -667,6 +667,8 @@ color: #d4d4d4;
               <input type="text" name="phone" placeholder="Telefone" required>
               <input type="email" name="email" placeholder="Email">
               <input type="text" name="neighborhood" placeholder="Bairro">
+              <input type="text" name="cidade" placeholder="Cidade" required>
+              <input type="text" name="pais" placeholder="País" value="Brasil" required>
               <button class="btn btn-primary" type="submit">Quero ser avisado</button>
             </form>
           </div>
@@ -683,6 +685,8 @@ color: #d4d4d4;
               <input type="email" name="email" placeholder="Email">
               <input type="text" name="service_type" placeholder="Serviço que realiza" required>
               <input type="text" name="neighborhood" placeholder="Bairro" required>
+              <input type="text" name="cidade" placeholder="Cidade" required>
+              <input type="text" name="pais" placeholder="País" value="Brasil" required>
               <button class="btn btn-primary" type="submit">Quero prestar serviço</button>
             </form>
           </div>
@@ -784,6 +788,8 @@ color: #d4d4d4;
         phone: form.get("telefone"),
         service_id: parseInt(form.get("servico"), 10),
         neighborhood: form.get("bairro"),
+        city: form.get("cidade"),
+        country: form.get("pais"),
         notes: form.get("observacao")
       };
 
